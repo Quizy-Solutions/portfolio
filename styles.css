@@ -1,0 +1,582 @@
+/* Custom Properties */
+:root {
+    --primary-blue: #007FFF;
+    --dark-blue: #0056b3;
+    --glow-blue: #00a6ff;
+}
+
+/* Global Styles */
+body {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* Navigation */
+.nav-link {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-blue);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-text {
+    background: linear-gradient(45deg, var(--primary-blue), var(--glow-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.hero-text-2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards 0.5s;
+}
+
+.typing-text {
+    border-right: 2px solid var(--primary-blue);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60%;
+    height: 4px;
+    background: var(--primary-blue);
+    border-radius: 2px;
+}
+
+/* Skill Cards */
+.skill-card {
+    background: rgba(0, 127, 255, 0.05);
+    border: 1px solid var(--primary-blue);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        transparent 0%,
+        rgba(0, 127, 255, 0.05) 50%,
+        transparent 100%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:hover::before {
+    transform: translateX(100%);
+}
+
+.skill-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 127, 255, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-icon-wrapper {
+    transform: scale(1.1);
+    background: var(--primary-blue);
+}
+
+.skill-icon-wrapper i {
+    font-size: 1.8rem;
+    color: var(--primary-blue);
+    transition: all 0.3s ease;
+}
+
+.skill-card:hover .skill-icon-wrapper i {
+    color: white;
+}
+
+.skill-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-blue);
+    margin-bottom: 1.5rem;
+}
+
+.skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: rgba(0, 127, 255, 0.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: rgba(0, 127, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.skill-item i {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    width: 24px;
+    text-align: center;
+}
+
+.skill-item span {
+    flex: 1;
+}
+
+.skill-progress {
+    width: 100px;
+    height: 4px;
+    background: rgba(0, 127, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: var(--primary-blue);
+    width: 0;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-item:hover .skill-progress::after {
+    width: var(--progress);
+}
+
+/* Project Cards */
+.project-card {
+    background: rgba(0, 127, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-content {
+    padding: 2rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.project-tags span {
+    background: rgba(0, 127, 255, 0.2);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+}
+
+.project-link {
+    display: inline-block;
+    color: var(--primary-blue);
+    text-decoration: none;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.project-link:hover {
+    transform: translateX(10px);
+}
+
+/* Social Links */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: rgba(0, 127, 255, 0.1);
+    border: 1px solid var(--primary-blue);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: var(--primary-blue);
+    transform: translateY(-5px);
+}
+
+/* Animations */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px var(--glow-blue),
+                     0 0 20px var(--glow-blue),
+                     0 0 30px var(--glow-blue);
+    }
+    to {
+        text-shadow: 0 0 20px var(--glow-blue),
+                     0 0 30px var(--glow-blue),
+                     0 0 40px var(--glow-blue);
+    }
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-blue) }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero-text {
+        font-size: 4rem;
+    }
+    
+    .hero-text-2 {
+        font-size: 3rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-blue);
+}
+
+.cta-button:hover {
+    background: transparent;
+    color: var(--primary-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 127, 255, 0.2);
+}
+
+/* Grid Animation */
+.grid-animation {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(var(--primary-blue) 1px, transparent 1px),
+        linear-gradient(90deg, var(--primary-blue) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: -1px -1px;
+    opacity: 0.1;
+}
+
+/* Advanced Navigation Styles */
+.nav-blur {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 127, 255, 0.2);
+}
+
+.nav-icon-link {
+    position: relative;
+    color: var(--primary-blue);
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    overflow: hidden;
+}
+
+.nav-icon-link:hover {
+    color: var(--glow-blue);
+    text-shadow: 0 0 10px var(--glow-blue);
+}
+
+.nav-icon-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-blue);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-icon-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.icon-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: var(--primary-blue);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-icon-link:hover .icon-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Glitch Effect */
+.glitch-container {
+    position: relative;
+}
+
+.glitch {
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    text-shadow: 0.05em 0 0 #00fffc, -0.03em -0.04em 0 #fc00ff,
+                 0.025em 0.04em 0 #fffc00;
+    animation: glitch 725ms infinite;
+}
+
+.glitch span {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9;
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim2 2.5s infinite linear alternate-reverse;
+}
+
+/* Animated Background */
+.background-animation {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Smooth section transitions */
+section {
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform, opacity;
+}
+
+/* Hero section parallax */
+#home {
+    perspective: 1000px;
+}
+
+.hero-text {
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+/* Smooth scroll indicator */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, 
+        var(--primary-blue) var(--scroll), 
+        transparent 0);
+    z-index: 1000;
+    transition: --scroll 0.1s ease;
+}
+
+/* Project card animations */
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 127, 255, 0.2);
+}
+
+/* Add scroll indicator */
+.scroll-indicator {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 50;
+}
+
+.scroll-dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(0, 127, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scroll-dot.active {
+    background: var(--primary-blue);
+    box-shadow: 0 0 10px var(--glow-blue);
+}
+
+/* Magnetic button effect */
+.magnetic-wrap {
+    position: relative;
+    display: inline-block;
+    padding: 1rem;
+}
+
+.magnetic-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Add more cool effects here... */
+
+/* Add these new animation keyframes */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation classes */
+.slide-in {
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.fade-in {
+    opacity: 0;
+    will-change: opacity;
+}
+
+.scale-in {
+    opacity: 0;
+    will-change: transform, opacity;
+} 
